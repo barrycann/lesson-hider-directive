@@ -5,20 +5,21 @@ angular.module('directivePractice')
       templateUrl: '../lessonHider.html',
       scope: {
          lesson: '=',
-         dayAlert: '&'
+         dayAlert: '&',
+         removeIt: '&'
       },
       link: function(scope, element, attributes){
          scope.getSchedule.then(function(response){
             scope.schedule = response.data;
           
-         scope.schedule.forEach(function(scheduleDay){
+            scope.schedule.forEach(function(scheduleDay){
 
-            if(scheduleDay.lesson === scope.lesson){
-               scope.lessonDay = scheduleDay.weekday;
-               element.css('text-decoration', 'line-through');
-               return;
-            }
-         });
+               if(scheduleDay.lesson === scope.lesson){
+                  scope.lessonDay = scheduleDay.weekday;
+                  element.css('text-decoration', 'line-through');
+                  return;
+               }
+            });
 
          });
       },

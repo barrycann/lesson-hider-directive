@@ -8,6 +8,11 @@ angular.module('directivePractice')
       } else {
          alert(lesson + ' has not been assigned a day!');
       }
-      
+   }
+
+   $scope.deleteLesson = function(lesson){
+      var ind = $scope.lessons.indexOf(lesson);
+      $scope.removed = $scope.lessons.splice(ind, 1)
+      console.log($scope.removed);
    }
 });
